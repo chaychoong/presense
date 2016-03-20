@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE081C9EF19000101C58 /* AppDelegate.swift */; };
+		FE6AFE0B1C9EF19000101C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE0A1C9EF19000101C58 /* ViewController.swift */; };
+		FE6AFE0E1C9EF19000101C58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE0C1C9EF19000101C58 /* Main.storyboard */; };
+		FE6AFE111C9EF19000101C58 /* Presense.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */; };
+		FE6AFE131C9EF19000101C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE121C9EF19000101C58 /* Assets.xcassets */; };
+		FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */; };
+		FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE201C9EF19000101C58 /* PresenseTests.swift */; };
+		FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE6AFE1D1C9EF19000101C58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE6AFDFD1C9EF19000101C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE6AFE041C9EF19000101C58;
+			remoteInfo = Presense;
+		};
+		FE6AFE281C9EF19000101C58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE6AFDFD1C9EF19000101C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE6AFE041C9EF19000101C58;
+			remoteInfo = Presense;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE6AFE051C9EF19000101C58 /* Presense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presense.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6AFE081C9EF19000101C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FE6AFE0A1C9EF19000101C58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE6AFE0D1C9EF19000101C58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE6AFE101C9EF19000101C58 /* Presense.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Presense.xcdatamodel; sourceTree = "<group>"; };
+		FE6AFE121C9EF19000101C58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE6AFE151C9EF19000101C58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FE6AFE171C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6AFE1C1C9EF19000101C58 /* PresenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6AFE201C9EF19000101C58 /* PresenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseTests.swift; sourceTree = "<group>"; };
+		FE6AFE221C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6AFE271C9EF19000101C58 /* PresenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseUITests.swift; sourceTree = "<group>"; };
+		FE6AFE2D1C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE6AFE021C9EF19000101C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE191C9EF19000101C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE241C9EF19000101C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE6AFDFC1C9EF19000101C58 = {
+			isa = PBXGroup;
+			children = (
+				FE6AFE071C9EF19000101C58 /* Presense */,
+				FE6AFE1F1C9EF19000101C58 /* PresenseTests */,
+				FE6AFE2A1C9EF19000101C58 /* PresenseUITests */,
+				FE6AFE061C9EF19000101C58 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE6AFE061C9EF19000101C58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE6AFE051C9EF19000101C58 /* Presense.app */,
+				FE6AFE1C1C9EF19000101C58 /* PresenseTests.xctest */,
+				FE6AFE271C9EF19000101C58 /* PresenseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE6AFE071C9EF19000101C58 /* Presense */ = {
+			isa = PBXGroup;
+			children = (
+				FE6AFE081C9EF19000101C58 /* AppDelegate.swift */,
+				FE6AFE0A1C9EF19000101C58 /* ViewController.swift */,
+				FE6AFE0C1C9EF19000101C58 /* Main.storyboard */,
+				FE6AFE121C9EF19000101C58 /* Assets.xcassets */,
+				FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */,
+				FE6AFE171C9EF19000101C58 /* Info.plist */,
+				FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */,
+			);
+			path = Presense;
+			sourceTree = "<group>";
+		};
+		FE6AFE1F1C9EF19000101C58 /* PresenseTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE6AFE201C9EF19000101C58 /* PresenseTests.swift */,
+				FE6AFE221C9EF19000101C58 /* Info.plist */,
+			);
+			path = PresenseTests;
+			sourceTree = "<group>";
+		};
+		FE6AFE2A1C9EF19000101C58 /* PresenseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */,
+				FE6AFE2D1C9EF19000101C58 /* Info.plist */,
+			);
+			path = PresenseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE6AFE041C9EF19000101C58 /* Presense */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AFE301C9EF19000101C58 /* Build configuration list for PBXNativeTarget "Presense" */;
+			buildPhases = (
+				FE6AFE011C9EF19000101C58 /* Sources */,
+				FE6AFE021C9EF19000101C58 /* Frameworks */,
+				FE6AFE031C9EF19000101C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Presense;
+			productName = Presense;
+			productReference = FE6AFE051C9EF19000101C58 /* Presense.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE6AFE1B1C9EF19000101C58 /* PresenseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AFE331C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseTests" */;
+			buildPhases = (
+				FE6AFE181C9EF19000101C58 /* Sources */,
+				FE6AFE191C9EF19000101C58 /* Frameworks */,
+				FE6AFE1A1C9EF19000101C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE6AFE1E1C9EF19000101C58 /* PBXTargetDependency */,
+			);
+			name = PresenseTests;
+			productName = PresenseTests;
+			productReference = FE6AFE1C1C9EF19000101C58 /* PresenseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE6AFE261C9EF19000101C58 /* PresenseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AFE361C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseUITests" */;
+			buildPhases = (
+				FE6AFE231C9EF19000101C58 /* Sources */,
+				FE6AFE241C9EF19000101C58 /* Frameworks */,
+				FE6AFE251C9EF19000101C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE6AFE291C9EF19000101C58 /* PBXTargetDependency */,
+			);
+			name = PresenseUITests;
+			productName = PresenseUITests;
+			productReference = FE6AFE271C9EF19000101C58 /* PresenseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE6AFDFD1C9EF19000101C58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = SUTDiot;
+				TargetAttributes = {
+					FE6AFE041C9EF19000101C58 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LN9K9RTZ5;
+					};
+					FE6AFE1B1C9EF19000101C58 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LN9K9RTZ5;
+						TestTargetID = FE6AFE041C9EF19000101C58;
+					};
+					FE6AFE261C9EF19000101C58 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LN9K9RTZ5;
+						TestTargetID = FE6AFE041C9EF19000101C58;
+					};
+				};
+			};
+			buildConfigurationList = FE6AFE001C9EF19000101C58 /* Build configuration list for PBXProject "Presense" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE6AFDFC1C9EF19000101C58;
+			productRefGroup = FE6AFE061C9EF19000101C58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE6AFE041C9EF19000101C58 /* Presense */,
+				FE6AFE1B1C9EF19000101C58 /* PresenseTests */,
+				FE6AFE261C9EF19000101C58 /* PresenseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE6AFE031C9EF19000101C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */,
+				FE6AFE131C9EF19000101C58 /* Assets.xcassets in Resources */,
+				FE6AFE0E1C9EF19000101C58 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE1A1C9EF19000101C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE251C9EF19000101C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE6AFE011C9EF19000101C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6AFE0B1C9EF19000101C58 /* ViewController.swift in Sources */,
+				FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */,
+				FE6AFE111C9EF19000101C58 /* Presense.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE181C9EF19000101C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AFE231C9EF19000101C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE6AFE1E1C9EF19000101C58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE6AFE041C9EF19000101C58 /* Presense */;
+			targetProxy = FE6AFE1D1C9EF19000101C58 /* PBXContainerItemProxy */;
+		};
+		FE6AFE291C9EF19000101C58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE6AFE041C9EF19000101C58 /* Presense */;
+			targetProxy = FE6AFE281C9EF19000101C58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FE6AFE0C1C9EF19000101C58 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE6AFE0D1C9EF19000101C58 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE6AFE151C9EF19000101C58 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE6AFE2E1C9EF19000101C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE6AFE2F1C9EF19000101C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE6AFE311C9EF19000101C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Presense/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.Presense;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FE6AFE321C9EF19000101C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Presense/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.Presense;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FE6AFE341C9EF19000101C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PresenseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Presense.app/Presense";
+			};
+			name = Debug;
+		};
+		FE6AFE351C9EF19000101C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PresenseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Presense.app/Presense";
+			};
+			name = Release;
+		};
+		FE6AFE371C9EF19000101C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PresenseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Presense;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		FE6AFE381C9EF19000101C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PresenseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Presense;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE6AFE001C9EF19000101C58 /* Build configuration list for PBXProject "Presense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AFE2E1C9EF19000101C58 /* Debug */,
+				FE6AFE2F1C9EF19000101C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE6AFE301C9EF19000101C58 /* Build configuration list for PBXNativeTarget "Presense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AFE311C9EF19000101C58 /* Debug */,
+				FE6AFE321C9EF19000101C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FE6AFE331C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AFE341C9EF19000101C58 /* Debug */,
+				FE6AFE351C9EF19000101C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FE6AFE361C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AFE371C9EF19000101C58 /* Debug */,
+				FE6AFE381C9EF19000101C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE6AFE101C9EF19000101C58 /* Presense.xcdatamodel */,
+			);
+			currentVersion = FE6AFE101C9EF19000101C58 /* Presense.xcdatamodel */;
+			path = Presense.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FE6AFDFD1C9EF19000101C58 /* Project object */;
+}
