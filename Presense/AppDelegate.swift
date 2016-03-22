@@ -10,13 +10,45 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
-
+    
+    let beaconManager = ESTBeaconManager()
+    
+    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        if let name = regions[region] {
+            notification.alertBody = "You have entered \(name)"
+            sendMessage("\((identity!.valueForKey("name") as? String)!) has entered \(name)")
+            notification.soundName = UILocalNotificationDefaultSoundName
+        }
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+    }
+    
+    func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        if let name = regions[region] {
+            notification.alertBody = "You have left \(name)"
+            sendMessage("\((identity!.valueForKey("name") as? String)!) has left \(name)")
+        }
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        ESTConfig.setupAppID("presense-kvx", andAppToken: "5b31091b3734b91e69ba73fae160a904")
+        
+        self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
+        for (region, _) in regions {
+            self.beaconManager.startMonitoringForRegion(region)
+        }
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        
         return true
     }
 
@@ -28,6 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "SlackData")
+        
+        do {
+            let result =
+                try managedContext.executeFetchRequest(fetchRequest)
+            if (result.count != 0) {
+                identity = result[0] as? NSManagedObject
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -102,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
+//                abort()
             }
         }
     }

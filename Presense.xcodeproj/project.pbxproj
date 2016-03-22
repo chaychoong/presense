@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE4792831C9FF8B700DE0F8E /* SlackPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4792821C9FF8B700DE0F8E /* SlackPost.swift */; };
 		FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE081C9EF19000101C58 /* AppDelegate.swift */; };
 		FE6AFE0B1C9EF19000101C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE0A1C9EF19000101C58 /* ViewController.swift */; };
 		FE6AFE0E1C9EF19000101C58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE0C1C9EF19000101C58 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 		FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */; };
 		FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE201C9EF19000101C58 /* PresenseTests.swift */; };
 		FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */; };
+		FE6AFE3A1C9EF1C500101C58 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */; };
+		FE6AFE3D1C9EF2B900101C58 /* BeaconsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE4792821C9FF8B700DE0F8E /* SlackPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackPost.swift; sourceTree = "<group>"; };
 		FE6AFE051C9EF19000101C58 /* Presense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6AFE081C9EF19000101C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE6AFE0A1C9EF19000101C58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,9 @@
 		FE6AFE271C9EF19000101C58 /* PresenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseUITests.swift; sourceTree = "<group>"; };
 		FE6AFE2D1C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
+		FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
+		FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6AFE3A1C9EF1C500101C58 /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,7 @@
 				FE6AFE1F1C9EF19000101C58 /* PresenseTests */,
 				FE6AFE2A1C9EF19000101C58 /* PresenseUITests */,
 				FE6AFE061C9EF19000101C58 /* Products */,
+				FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,10 +111,13 @@
 				FE6AFE081C9EF19000101C58 /* AppDelegate.swift */,
 				FE6AFE0A1C9EF19000101C58 /* ViewController.swift */,
 				FE6AFE0C1C9EF19000101C58 /* Main.storyboard */,
-				FE6AFE121C9EF19000101C58 /* Assets.xcassets */,
 				FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */,
+				FE6AFE121C9EF19000101C58 /* Assets.xcassets */,
 				FE6AFE171C9EF19000101C58 /* Info.plist */,
 				FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */,
+				FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */,
+				FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */,
+				FE4792821C9FF8B700DE0F8E /* SlackPost.swift */,
 			);
 			path = Presense;
 			sourceTree = "<group>";
@@ -263,8 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE6AFE0B1C9EF19000101C58 /* ViewController.swift in Sources */,
+				FE4792831C9FF8B700DE0F8E /* SlackPost.swift in Sources */,
 				FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */,
 				FE6AFE111C9EF19000101C58 /* Presense.xcdatamodeld in Sources */,
+				FE6AFE3D1C9EF2B900101C58 /* BeaconsInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,10 +420,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Presense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.Presense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 			};
 			name = Debug;
 		};
@@ -417,10 +436,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Presense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.Presense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 			};
 			name = Release;
 		};
@@ -432,6 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Presense.app/Presense";
 			};
 			name = Debug;
@@ -444,6 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Presense.app/Presense";
 			};
 			name = Release;
@@ -455,6 +481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				TEST_TARGET_NAME = Presense;
 				USES_XCTRUNNER = YES;
 			};
@@ -467,6 +494,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iotlab.PresenseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				TEST_TARGET_NAME = Presense;
 				USES_XCTRUNNER = YES;
 			};
@@ -491,6 +519,7 @@
 				FE6AFE321C9EF19000101C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE6AFE331C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +528,7 @@
 				FE6AFE351C9EF19000101C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE6AFE361C9EF19000101C58 /* Build configuration list for PBXNativeTarget "PresenseUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +537,7 @@
 				FE6AFE381C9EF19000101C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
