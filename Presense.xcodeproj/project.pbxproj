@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE24A41D1CA1C7DA00424850 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE24A41C1CA1C7DA00424850 /* EstimoteSDK.framework */; };
 		FE4792831C9FF8B700DE0F8E /* SlackPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4792821C9FF8B700DE0F8E /* SlackPost.swift */; };
 		FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE081C9EF19000101C58 /* AppDelegate.swift */; };
 		FE6AFE0B1C9EF19000101C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE0A1C9EF19000101C58 /* ViewController.swift */; };
@@ -16,7 +17,6 @@
 		FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */; };
 		FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE201C9EF19000101C58 /* PresenseTests.swift */; };
 		FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */; };
-		FE6AFE3A1C9EF1C500101C58 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */; };
 		FE6AFE3D1C9EF2B900101C58 /* BeaconsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE24A41C1CA1C7DA00424850 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
 		FE4792821C9FF8B700DE0F8E /* SlackPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackPost.swift; sourceTree = "<group>"; };
 		FE6AFE051C9EF19000101C58 /* Presense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6AFE081C9EF19000101C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		FE6AFE271C9EF19000101C58 /* PresenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseUITests.swift; sourceTree = "<group>"; };
 		FE6AFE2D1C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
 		FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE6AFE3A1C9EF1C500101C58 /* EstimoteSDK.framework in Frameworks */,
+				FE24A41D1CA1C7DA00424850 /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 				FE6AFE1F1C9EF19000101C58 /* PresenseTests */,
 				FE6AFE2A1C9EF19000101C58 /* PresenseUITests */,
 				FE6AFE061C9EF19000101C58 /* Products */,
-				FE6AFE391C9EF1C500101C58 /* EstimoteSDK.framework */,
+				FE24A41C1CA1C7DA00424850 /* EstimoteSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};

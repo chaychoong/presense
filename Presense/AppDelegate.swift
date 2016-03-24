@@ -18,20 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
         let notification = UILocalNotification()
-        if let name = regions[region] {
-            notification.alertBody = "You have entered \(name)"
-            sendMessage("\((identity!.valueForKey("name") as? String)!) has entered \(name)")
-            notification.soundName = UILocalNotificationDefaultSoundName
-        }
+        notification.alertBody = "You have entered the region"
+        sendMessage("\((identity!.valueForKey("name") as? String)!) has entered the region")
+        notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
     
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
         let notification = UILocalNotification()
-        if let name = regions[region] {
-            notification.alertBody = "You have left \(name)"
-            sendMessage("\((identity!.valueForKey("name") as? String)!) has left \(name)")
-        }
+        notification.alertBody = "You have left the region"
+        sendMessage("\((identity!.valueForKey("name") as? String)!) has left the region")
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 
@@ -42,8 +38,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
-        for (region, _) in regions {
-            self.beaconManager.startMonitoringForRegion(region)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "SlackData")
+        
+        do {
+            let result =
+                try managedContext.executeFetchRequest(fetchRequest)
+            if (result.count != 0) {
+                identity = result[0] as? NSManagedObject
+               
+                self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
+                    proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+                    major: UInt16(identity!.valueForKey("major") as! Int),
+                    minor: UInt16(identity!.valueForKey("minor") as! Int),
+                    identifier: "any"))
+                
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
         }
         
         UIApplication.sharedApplication().registerUserNotificationSettings(
@@ -61,9 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext
-        
         let fetchRequest = NSFetchRequest(entityName: "SlackData")
         
         do {

@@ -12,6 +12,7 @@ import CoreData
 
 var identity: NSManagedObject?
 
+
 class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -71,7 +72,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
         
         let fetchRequest = NSFetchRequest(entityName: "SlackData")
-        fetchRequest.predicate = NSPredicate(format: "name == %@", (identity!.valueForKey("name") as? String)!)
+//        fetchRequest.predicate = NSPredicate(format: "name == %@", (identity!.valueForKey("name") as? String)!)
         var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         do {
@@ -79,6 +80,13 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 try managedContext.executeFetchRequest(fetchRequest)
             if (result.count != 0) {
                 webhookURL = (result[0] as? NSManagedObject)!
+                
+                self.beaconManager.stopMonitoringForRegion(CLBeaconRegion(
+                    proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+                    major: UInt16(webhookURL.valueForKey("major") as! Int),
+                    minor: UInt16(webhookURL.valueForKey("minor") as! Int),
+                    identifier: "any"))
+                
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -96,6 +104,12 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             try managedContext.save()
             
             identity = webhookURL
+            
+            self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
+                proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+                major: UInt16(identity!.valueForKey("major") as! Int),
+                minor: UInt16(identity!.valueForKey("minor") as! Int),
+                identifier: "any"))
             
             urlLabel.text = "URL set to: \((identity!.valueForKey("url") as? String)!)"
             nameLabel.text = "Name set to: \((identity!.valueForKey("name") as? String)!)"
@@ -116,8 +130,19 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         if let nearest = beacons.first {
             nearestBeacon = nearest
             beaconFound = true
-            print(nearest.major)
+            print("\(nearest.major) \(nearest.minor)")
             // TODO: update the UI here
+        }
+    }
+    
+    func isAppAlreadyLaunchedOnce()->Bool{
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce") {
+            print(isAppAlreadyLaunchedOnce)
+            return true
+        } else{
+            return false
         }
     }
 }
