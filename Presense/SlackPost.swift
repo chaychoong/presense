@@ -13,6 +13,7 @@ import CoreData
 enum FieldError: ErrorType {
     case emptyName
     case invalidURL
+    case beaconsNotFound
 }
 
 func sendMessage(message: String) throws {

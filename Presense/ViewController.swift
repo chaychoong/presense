@@ -11,7 +11,7 @@ import CoreData
 
 
 var identity: NSManagedObject?
-var tmp: [String]?
+var tmp: [String] = ["none", "none"]
 
 class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var urlLabel: UILabel!
@@ -41,7 +41,13 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 "Enter a valid URL!", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
-            do {try saveName(tmp![0], url: tmp![1])} catch {}
+            do {try saveName(tmp[0], url: tmp[1])} catch {}
+        } catch FieldError.beaconsNotFound {
+            let alertController = UIAlertController(title: "Error", message:
+                "Beacon Not Found!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            do {try saveName(tmp[0], url: tmp[1])} catch {}
         } catch {
         }
     }
@@ -111,8 +117,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         fetchRequest.fetchLimit = 1
         
         do {
-            let result =
-                try managedContext.executeFetchRequest(fetchRequest)
+            let result = try managedContext.executeFetchRequest(fetchRequest)
             if (result.count > 0) {
                 identity = result[0] as? NSManagedObject
                 
@@ -149,43 +154,41 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             throw FieldError.emptyName
         }
         
+        if (!beaconFound) {
+            throw FieldError.beaconsNotFound
+        }
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+        
         
         let fetchRequest = NSFetchRequest(entityName: "SlackData")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            fetchRequest.fetchLimit = 1
-        
-        var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
+        fetchRequest.fetchLimit = 1
+
         do {
             let result = try managedContext.executeFetchRequest(fetchRequest)
-            if (result.count > 0) {
+            let count = result.count
+            let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+            var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            
+            if (count > 0) {
                 webhookURL = result[0] as! NSManagedObject
-                
+                tmp = [webhookURL.valueForKey("name") as! String, webhookURL.valueForKey("url") as! String]
                 self.beaconManager.stopMonitoringForRegion(CLBeaconRegion(
                     proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
                     major: UInt16(webhookURL.valueForKey("major") as! Int),
                     minor: UInt16(webhookURL.valueForKey("minor") as! Int),
                     identifier: "any"))
-                
             }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        tmp = [webhookURL.valueForKey("name") as! String, webhookURL.valueForKey("url") as! String]
-        webhookURL.setValue(url, forKey: "url")
-        webhookURL.setValue(name, forKey: "name")
-        webhookURL.setValue(NSDate(), forKey: "date")
-        
-        if beaconFound {
+            
+            webhookURL.setValue(url, forKey: "url")
+            webhookURL.setValue(name, forKey: "name")
+            webhookURL.setValue(NSDate(), forKey: "date")
             webhookURL.setValue(nearestBeacon.major, forKey: "major")
             webhookURL.setValue(nearestBeacon.minor, forKey: "minor")
-        }
-        
-        do {
+            webhookURL.setValue("registered", forKey: "status")
+            
             try webhookURL.managedObjectContext?.save()
             
             identity = webhookURL
@@ -198,15 +201,9 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             
             urlLabel.text = "URL set to: \((identity!.valueForKey("url") as? String)!)"
             nameLabel.text = "Name set to: \((identity!.valueForKey("name") as? String)!)"
-            if beaconFound {
-                nearestField.text = "Nearest Beacon: \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)"
-            }
-            else {
-                nearestField.text = "Nearest Beacon: Undetected"
-            }
-            
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            nearestField.text = "Nearest Beacon: \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)"
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
         }
     }
     
