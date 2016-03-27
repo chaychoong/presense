@@ -17,7 +17,6 @@
 		FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */; };
 		FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE201C9EF19000101C58 /* PresenseTests.swift */; };
 		FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */; };
-		FE6AFE3D1C9EF2B900101C58 /* BeaconsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseUITests.swift; sourceTree = "<group>"; };
 		FE6AFE2D1C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
-		FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,6 @@
 				FE6AFE171C9EF19000101C58 /* Info.plist */,
 				FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */,
 				FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */,
-				FE6AFE3C1C9EF2B900101C58 /* BeaconsInfo.swift */,
 				FE4792821C9FF8B700DE0F8E /* SlackPost.swift */,
 			);
 			path = Presense;
@@ -278,7 +275,6 @@
 				FE4792831C9FF8B700DE0F8E /* SlackPost.swift in Sources */,
 				FE6AFE091C9EF19000101C58 /* AppDelegate.swift in Sources */,
 				FE6AFE111C9EF19000101C58 /* Presense.xcdatamodeld in Sources */,
-				FE6AFE3D1C9EF2B900101C58 /* BeaconsInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

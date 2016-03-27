@@ -17,18 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     let beaconManager = ESTBeaconManager()
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
-        let notification = UILocalNotification()
-        notification.alertBody = "You have entered the region"
-        sendMessage("\((identity!.valueForKey("name") as? String)!) has entered the region")
-        notification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+        do {
+            let notification = UILocalNotification()
+            notification.alertBody = "You have entered the region"
+            try sendMessage("\((identity!.valueForKey("name") as? String)!) has entered the region")
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+            saveStatus("available")
+        } catch {
+            print("URL error")
+        }
+        
     }
     
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
-        let notification = UILocalNotification()
-        notification.alertBody = "You have left the region"
-        sendMessage("\((identity!.valueForKey("name") as? String)!) has left the region")
-        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+        do {
+            let notification = UILocalNotification()
+            notification.alertBody = "You have left the region"
+            try sendMessage("\((identity!.valueForKey("name") as? String)!) has left the region")
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+            saveStatus("out of office")
+        } catch {
+            print("URL error")
+        }
+        
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

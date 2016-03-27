@@ -11,7 +11,7 @@ import CoreData
 
 
 var identity: NSManagedObject?
-
+var tmp: [String]?
 
 class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var urlLabel: UILabel!
@@ -24,27 +24,62 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var busyButton: UIButton!
     
     @IBAction func testButton(sender: AnyObject) {
-        saveName(nameField.text!, url: textField.text!)
-        sendMessage("\((identity!.valueForKey("name") as? String)!) registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
-        self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
-        availableButton.enabled = false
-        saveStatus("available")
+        do {
+            try saveName(nameField.text!, url: textField.text!)
+            try sendMessage("\((identity!.valueForKey("name") as? String)!) registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
+            self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
+            availableButton.enabled = false
+            saveStatus("available")
+        } catch FieldError.emptyName {
+            let alertController = UIAlertController(title: "Error", message:
+                "Enter a valid name!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } catch FieldError.invalidURL {
+            let alertController = UIAlertController(title: "Error", message:
+                "Enter a valid URL!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            do {try saveName(tmp![0], url: tmp![1])} catch {}
+        } catch {
+        }
     }
     
     @IBAction func availableButton(sender: AnyObject) {
-        availableButton.enabled = false
-        busyButton.enabled = true
-        sendMessage("\((identity!.valueForKey("name") as? String)!) is available")
-        self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
-        saveStatus("available")
+        do {
+            availableButton.enabled = false
+            busyButton.enabled = true
+            try sendMessage("\((identity!.valueForKey("name") as? String)!) is available")
+            self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
+            saveStatus("available")
+        } catch FieldError.invalidURL {
+            let alertController = UIAlertController(title: "Error", message:
+                "Enter a valid URL!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } catch {
+        }
     }
     
     @IBAction func busyButton(sender: AnyObject) {
-        busyButton.enabled = false
-        availableButton.enabled = true
-        sendMessage("\((identity!.valueForKey("name") as? String)!) is busy")
-        self.view.backgroundColor = UIColor(red: CGFloat(58)/255.0, green: CGFloat(145)/255.0, blue: CGFloat(219)/255.0, alpha: 1.0)
-        saveStatus("busy")
+        
+        do {
+            busyButton.enabled = false
+            availableButton.enabled = true
+            try sendMessage("\((identity!.valueForKey("name") as? String)!) is busy")
+            self.view.backgroundColor = UIColor(red: CGFloat(58)/255.0, green: CGFloat(145)/255.0, blue: CGFloat(219)/255.0, alpha: 1.0)
+            saveStatus("busy")
+        } catch FieldError.invalidURL {
+            let alertController = UIAlertController(title: "Error", message:
+                "Enter a valid URL!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } catch {
+        }
+                
     }
     
     var beaconManager:ESTBeaconManager!
@@ -73,7 +108,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "SlackData")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            fetchRequest.fetchLimit = 1
+        fetchRequest.fetchLimit = 1
         
         do {
             let result =
@@ -86,9 +121,16 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 nearestField.text = "Nearest Beacon: \(identity!.valueForKey("major") as! NSNumber):\(identity!.valueForKey("minor") as! NSNumber)"
                 if ((identity!.valueForKey("status") as! String) == "busy") {
                     self.view.backgroundColor = UIColor(red: CGFloat(58)/255.0, green: CGFloat(145)/255.0, blue: CGFloat(219)/255.0, alpha: 1.0)
+                    busyButton.enabled = false
+                    availableButton.enabled = true
+                }
+                else if ((identity!.valueForKey("status") as! String) == "available") {
+                    self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
+                    availableButton.enabled = false
+                    busyButton.enabled = true
                 }
                 else {
-                    self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
+                    self.view.backgroundColor = UIColor(red: CGFloat(224)/255.0, green: CGFloat(255)/255.0, blue: CGFloat(237)/255.0, alpha: 1.0)
                 }
             }
         } catch let error as NSError {
@@ -101,7 +143,11 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    func saveName(name: String, url: String) {
+    func saveName(name: String, url: String) throws {
+        
+        if name == "" {
+            throw FieldError.emptyName
+        }
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -114,8 +160,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         do {
-            let result =
-                try managedContext.executeFetchRequest(fetchRequest)
+            let result = try managedContext.executeFetchRequest(fetchRequest)
             if (result.count > 0) {
                 webhookURL = result[0] as! NSManagedObject
                 
@@ -130,6 +175,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
+        tmp = [webhookURL.valueForKey("name") as! String, webhookURL.valueForKey("url") as! String]
         webhookURL.setValue(url, forKey: "url")
         webhookURL.setValue(name, forKey: "name")
         webhookURL.setValue(NSDate(), forKey: "date")
@@ -164,38 +210,6 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         }
     }
     
-    func saveStatus(status: String) {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
-        let fetchRequest = NSFetchRequest(entityName: "SlackData")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            fetchRequest.fetchLimit = 1
-        var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        do {
-            let result =
-                try managedContext.executeFetchRequest(fetchRequest)
-            if (result.count > 0) {
-                webhookURL = result[0] as! NSManagedObject
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        webhookURL.setValue(status, forKey: "status")
-        
-        do {
-            try webhookURL.managedObjectContext?.save()
-            
-            identity = webhookURL
-            
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
-    
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon],
                        inRegion region: CLBeaconRegion) {
         if let nearest = beacons.first {
@@ -217,3 +231,36 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         }
     }
 }
+
+func saveStatus(status: String) {
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+    let fetchRequest = NSFetchRequest(entityName: "SlackData")
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    fetchRequest.fetchLimit = 1
+    var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+    
+    do {
+        let result =
+            try managedContext.executeFetchRequest(fetchRequest)
+        if (result.count > 0) {
+            webhookURL = result[0] as! NSManagedObject
+        }
+    } catch let error as NSError {
+        print("Could not fetch \(error), \(error.userInfo)")
+    }
+    
+    webhookURL.setValue(status, forKey: "status")
+    
+    do {
+        try webhookURL.managedObjectContext?.save()
+        
+        identity = webhookURL
+        
+    } catch let error as NSError  {
+        print("Could not save \(error), \(error.userInfo)")
+    }
+}
+

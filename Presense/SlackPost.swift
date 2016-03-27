@@ -10,7 +10,15 @@ import UIKit
 import Foundation
 import CoreData
 
-func sendMessage(message: String) {
+enum FieldError: ErrorType {
+    case emptyName
+    case invalidURL
+}
+
+func sendMessage(message: String) throws {
+    
+    var err: String = ""
+    let semaphore = dispatch_semaphore_create(0)
     
     let payload = "payload={\"channel\": \"#presensetest\", \"username\": \"webhookbot\", \"icon_emoji\":\":calling:\", \"text\": \"\(message)\"}"
     let data = (payload as NSString).dataUsingEncoding(NSUTF8StringEncoding)
@@ -20,24 +28,30 @@ func sendMessage(message: String) {
         request.HTTPMethod = "POST"
         request.HTTPBody = data
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request){
-            (data, response, error) -> Void in
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+
             if error != nil {
-                print("error: \(error!.localizedDescription): \(error!.userInfo)")
+                err = ("error: \(error!.localizedDescription): \(error!.userInfo)")
+                print(err)
             }
             else if data != nil {
                 if let str = NSString(data: data!, encoding: NSUTF8StringEncoding) {
                     print("\(str)")
                 }
                 else {
-                    print("error")
+                    err = ("error")
                 }
             }
+            dispatch_semaphore_signal(semaphore)
         }
         task.resume()
+        
     }
     else {
-        print("url invalid")
+        err = ("error")
     }
-    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    if (err != "") {
+        throw FieldError.invalidURL
+    }
 }
