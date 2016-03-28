@@ -21,7 +21,8 @@ func sendMessage(message: String) throws {
     var err: String = ""
     let semaphore = dispatch_semaphore_create(0)
     
-    let payload = "payload={\"channel\": \"#presensetest\", \"username\": \"webhookbot\", \"icon_emoji\":\":calling:\", \"text\": \"\(message)\"}"
+//    let payload = "payload={\"channel\": \"#presensetest\", \"username\": \"webhookbot\", \"icon_emoji\":\":calling:\", \"text\": \"\(message)\"}"
+    let payload = "payload={\"user\": \"\(identity!.valueForKey("name") as! String)\", \"status\": \"\(message)\"}"
     let data = (payload as NSString).dataUsingEncoding(NSUTF8StringEncoding)
     if let url = NSURL(string: (identity!.valueForKey("url") as? String)!)
     {

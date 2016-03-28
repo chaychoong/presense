@@ -26,7 +26,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBAction func testButton(sender: AnyObject) {
         do {
             try saveName(nameField.text!, url: textField.text!)
-            try sendMessage("\((identity!.valueForKey("name") as? String)!) registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
+            try sendMessage("registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
             self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
             availableButton.enabled = false
             saveStatus("available")
@@ -56,7 +56,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         do {
             availableButton.enabled = false
             busyButton.enabled = true
-            try sendMessage("\((identity!.valueForKey("name") as? String)!) is available")
+            try sendMessage("available")
             self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
             saveStatus("available")
         } catch FieldError.invalidURL {
@@ -74,7 +74,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         do {
             busyButton.enabled = false
             availableButton.enabled = true
-            try sendMessage("\((identity!.valueForKey("name") as? String)!) is busy")
+            try sendMessage("busy")
             self.view.backgroundColor = UIColor(red: CGFloat(58)/255.0, green: CGFloat(145)/255.0, blue: CGFloat(219)/255.0, alpha: 1.0)
             saveStatus("busy")
         } catch FieldError.invalidURL {
