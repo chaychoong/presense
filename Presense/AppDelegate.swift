@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
             saveStatus("available")
+            NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
         } catch {
             print("URL error")
         }
-        
     }
     
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         } catch {
             print("URL error")
         }
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

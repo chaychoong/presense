@@ -99,12 +99,11 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.willEnterForeground(_:)), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.willEnterForeground(_:)), name: "EventNotification", object: nil)
         beaconManager.startRangingBeaconsInRegion(CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "any"))
     }
     
     func willEnterForeground(notification: NSNotification!) {
-        // do whatever you want when the app is brought back to the foreground
         refresh()
     }
     
@@ -150,6 +149,8 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 }
                 else {
                     self.view.backgroundColor = UIColor(red: CGFloat(224)/255.0, green: CGFloat(255)/255.0, blue: CGFloat(237)/255.0, alpha: 1.0)
+                    availableButton.enabled = false
+                    busyButton.enabled = false
                 }
             }
         } catch let error as NSError {
