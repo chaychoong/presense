@@ -57,3 +57,36 @@ func sendMessage(message: String) throws {
         throw FieldError.invalidURL
     }
 }
+
+func saveStatus(status: String) {
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    
+    let fetchRequest = NSFetchRequest(entityName: "SlackData")
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    fetchRequest.fetchLimit = 1
+    
+    
+    do {
+        
+        let result = try managedContext.executeFetchRequest(fetchRequest)
+        let count = result.count
+        let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+        var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        if (count > 0) {
+            webhookURL = result[0] as! NSManagedObject
+        }
+        
+        webhookURL.setValue(status, forKey: "status")
+        
+        try webhookURL.managedObjectContext?.save()
+        print("Status changed to \(status)")
+        
+        identity = webhookURL
+        
+    } catch let error as NSError {
+        print("Could not fetch \(error), \(error.userInfo)")
+    }
+}

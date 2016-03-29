@@ -111,13 +111,13 @@
 			children = (
 				FE6AFE081C9EF19000101C58 /* AppDelegate.swift */,
 				FE6AFE0A1C9EF19000101C58 /* ViewController.swift */,
+				FE4792821C9FF8B700DE0F8E /* SlackPost.swift */,
 				FE6AFE0C1C9EF19000101C58 /* Main.storyboard */,
 				FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */,
 				FE6AFE121C9EF19000101C58 /* Assets.xcassets */,
 				FE6AFE171C9EF19000101C58 /* Info.plist */,
 				FE6AFE0F1C9EF19000101C58 /* Presense.xcdatamodeld */,
 				FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */,
-				FE4792821C9FF8B700DE0F8E /* SlackPost.swift */,
 			);
 			path = Presense;
 			sourceTree = "<group>";

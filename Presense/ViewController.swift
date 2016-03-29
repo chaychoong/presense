@@ -11,11 +11,9 @@ import CoreData
 
 
 var identity: NSManagedObject?
-var tmp: [String] = ["none", "none"]
+var tmp: [String] = ["Name", "Slackbot URL"]
 
 class ViewController: UIViewController, ESTBeaconManagerDelegate {
-    @IBOutlet weak var urlLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var nearestField: UILabel!
@@ -28,6 +26,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             try saveName(nameField.text!, url: textField.text!)
             try sendMessage("registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
             self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
+            busyButton.enabled = true
             availableButton.enabled = false
             saveStatus("available")
         } catch FieldError.emptyName {
@@ -134,8 +133,10 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
             if (result.count > 0) {
                 identity = result[0] as? NSManagedObject
                 
-                nameLabel.text = "Name set to: \(identity!.valueForKey("name") as! String)"
-                urlLabel.text = "URL set to: \(identity!.valueForKey("url") as! String)"
+                nameField.attributedPlaceholder = NSAttributedString(string: "\(identity!.valueForKey("name") as! String)")
+                nameField.text = ""
+                textField.attributedPlaceholder = NSAttributedString(string: "\(identity!.valueForKey("url") as! String)")
+                textField.text = ""
                 nearestField.text = "Nearest Beacon: \(identity!.valueForKey("major") as! NSNumber):\(identity!.valueForKey("minor") as! NSNumber)"
                 if ((identity!.valueForKey("status") as! String) == "busy") {
                     self.view.backgroundColor = UIColor(red: CGFloat(58)/255.0, green: CGFloat(145)/255.0, blue: CGFloat(219)/255.0, alpha: 1.0)
@@ -214,8 +215,10 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 minor: UInt16(identity!.valueForKey("minor") as! Int),
                 identifier: "any"))
             
-            urlLabel.text = "URL set to: \((identity!.valueForKey("url") as? String)!)"
-            nameLabel.text = "Name set to: \((identity!.valueForKey("name") as? String)!)"
+            nameField.attributedPlaceholder = NSAttributedString(string: "\(identity!.valueForKey("name") as! String)")
+            nameField.text = ""
+            textField.attributedPlaceholder = NSAttributedString(string: "\(identity!.valueForKey("url") as! String)")
+            textField.text = ""
             nearestField.text = "Nearest Beacon: \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)"
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -244,36 +247,5 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     }
 }
 
-func saveStatus(status: String) {
-    
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let managedContext = appDelegate.managedObjectContext
-    
-    let fetchRequest = NSFetchRequest(entityName: "SlackData")
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-    fetchRequest.fetchLimit = 1
-    
-    
-    do {
-        
-        let result = try managedContext.executeFetchRequest(fetchRequest)
-        let count = result.count
-        let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
-        var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        if (count > 0) {
-            webhookURL = result[0] as! NSManagedObject
-        }
-        
-        webhookURL.setValue(status, forKey: "status")
-        
-        try webhookURL.managedObjectContext?.save()
-        print("Status changed to \(status)")
-        
-        identity = webhookURL
-        
-    } catch let error as NSError {
-        print("Could not fetch \(error), \(error.userInfo)")
-    }
-}
+
 
