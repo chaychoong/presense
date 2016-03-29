@@ -17,6 +17,7 @@
 		FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6AFE141C9EF19000101C58 /* LaunchScreen.storyboard */; };
 		FE6AFE211C9EF19000101C58 /* PresenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE201C9EF19000101C58 /* PresenseTests.swift */; };
 		FE6AFE2C1C9EF19000101C58 /* PresenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */; };
+		FEBFC2EF1CAA35760028836F /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = FEBFC2EE1CAA35760028836F /* LICENSE.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		FE6AFE2B1C9EF19000101C58 /* PresenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenseUITests.swift; sourceTree = "<group>"; };
 		FE6AFE2D1C9EF19000101C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE6AFE3B1C9EF1F700101C58 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
+		FEBFC2EE1CAA35760028836F /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		FE6AFDFC1C9EF19000101C58 = {
 			isa = PBXGroup;
 			children = (
+				FEBFC2EE1CAA35760028836F /* LICENSE.txt */,
 				FE6AFE071C9EF19000101C58 /* Presense */,
 				FE6AFE1F1C9EF19000101C58 /* PresenseTests */,
 				FE6AFE2A1C9EF19000101C58 /* PresenseUITests */,
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEBFC2EF1CAA35760028836F /* LICENSE.txt in Resources */,
 				FE6AFE161C9EF19000101C58 /* LaunchScreen.storyboard in Resources */,
 				FE6AFE131C9EF19000101C58 /* Assets.xcassets in Resources */,
 				FE6AFE0E1C9EF19000101C58 /* Main.storyboard in Resources */,
