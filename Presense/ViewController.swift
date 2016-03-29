@@ -98,8 +98,19 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
         beaconManager = ESTBeaconManager()
         beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.willEnterForeground(_:)), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         beaconManager.startRangingBeaconsInRegion(CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "any"))
+    }
+    
+    func willEnterForeground(notification: NSNotification!) {
+        // do whatever you want when the app is brought back to the foreground
+        refresh()
+    }
+    
+    deinit {
+        // make sure to remove the observer when this view controller is dismissed/deallocated
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +120,10 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        refresh()
+    }
+    
+    func refresh() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "SlackData")
@@ -233,31 +247,32 @@ func saveStatus(status: String) {
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
-    let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+    
     let fetchRequest = NSFetchRequest(entityName: "SlackData")
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     fetchRequest.fetchLimit = 1
-    var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+    
     
     do {
-        let result =
-            try managedContext.executeFetchRequest(fetchRequest)
-        if (result.count > 0) {
+        
+        let result = try managedContext.executeFetchRequest(fetchRequest)
+        let count = result.count
+        let entity =  NSEntityDescription.entityForName("SlackData", inManagedObjectContext:managedContext)
+        var webhookURL = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        if (count > 0) {
             webhookURL = result[0] as! NSManagedObject
         }
-    } catch let error as NSError {
-        print("Could not fetch \(error), \(error.userInfo)")
-    }
-    
-    webhookURL.setValue(status, forKey: "status")
-    
-    do {
+        
+        webhookURL.setValue(status, forKey: "status")
+        
         try webhookURL.managedObjectContext?.save()
+        print("Status changed to \(status)")
         
         identity = webhookURL
         
-    } catch let error as NSError  {
-        print("Could not save \(error), \(error.userInfo)")
+    } catch let error as NSError {
+        print("Could not fetch \(error), \(error.userInfo)")
     }
 }
 

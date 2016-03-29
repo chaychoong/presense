@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         do {
             let notification = UILocalNotification()
             notification.alertBody = "You have entered the region"
-            try sendMessage("\((identity!.valueForKey("name") as? String)!) has entered the region")
+            try sendMessage("available")
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
             saveStatus("available")
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         do {
             let notification = UILocalNotification()
             notification.alertBody = "You have left the region"
-            try sendMessage("\((identity!.valueForKey("name") as? String)!) has left the region")
+            try sendMessage("out of office")
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
             saveStatus("out of office")
         } catch {
