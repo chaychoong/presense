@@ -229,7 +229,12 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                        inRegion region: CLBeaconRegion) {
         if let nearest = beacons.first {
             nearestBeacon = nearest
-            beaconFound = true
+            if (nearest.major != 0 && nearest.minor != 0) {
+                beaconFound = true
+            }
+            else {
+                beaconFound = false
+            }
             print("\(nearest.major) \(nearest.minor)")
             // TODO: update the UI here
         }
