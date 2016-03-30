@@ -24,7 +24,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBAction func testButton(sender: AnyObject) {
         do {
             try saveName(nameField.text!, url: textField.text!)
-            try sendMessage("registered under \((identity!.valueForKey("major") as? NSNumber)!):\((identity!.valueForKey("minor") as? NSNumber)!)")
+            try sendMessage("available")
             self.view.backgroundColor = UIColor(red: CGFloat(98)/255.0, green: CGFloat(177)/255.0, blue: CGFloat(126)/255.0, alpha: 1.0)
             busyButton.enabled = true
             availableButton.enabled = false
@@ -151,6 +151,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 else {
                     self.view.backgroundColor = UIColor(red: CGFloat(224)/255.0, green: CGFloat(255)/255.0, blue: CGFloat(237)/255.0, alpha: 1.0)
                     availableButton.enabled = false
+                    availableButton.setT
                     busyButton.enabled = false
                 }
             }
