@@ -13,34 +13,44 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
+    var operationQueue = NSOperationQueue()
     
     let beaconManager = ESTBeaconManager()
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
-        do {
-            let notification = UILocalNotification()
-            notification.alertBody = "You have entered the region"
-            try sendMessage("available")
-            notification.soundName = UILocalNotificationDefaultSoundName
-            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-            saveStatus("available")
-            NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
-        } catch {
-            print("URL error")
+        let count = operationQueue.operationCount
+        if (count > 0) {
+            operationQueue.cancelAllOperations()
+        }
+        else {
+            do {
+                let notification = UILocalNotification()
+                notification.alertBody = "You have entered the region"
+                try sendMessage("available")
+                notification.soundName = UILocalNotificationDefaultSoundName
+                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+                saveStatus("available")
+                NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
+            } catch {
+                print("URL error")
+            }
         }
     }
     
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
-        do {
-            let notification = UILocalNotification()
-            notification.alertBody = "You have left the region"
-            try sendMessage("out of office")
-            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-            saveStatus("out of office")
-        } catch {
-            print("URL error")
+        operationQueue.addOperationWithBlock{ () -> Void in
+            sleep(2)
+            do {
+                let notification = UILocalNotification()
+                notification.alertBody = "You have left the region"
+                try sendMessage("out of office")
+                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+                saveStatus("out of office")
+            } catch {
+                print("URL error")
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
