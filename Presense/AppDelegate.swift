@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        ESTConfig.setupAppID("presense-kvx", andAppToken: "5b31091b3734b91e69ba73fae160a904")
-        
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         
