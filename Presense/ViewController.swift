@@ -151,7 +151,6 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 else {
                     self.view.backgroundColor = UIColor(red: CGFloat(224)/255.0, green: CGFloat(255)/255.0, blue: CGFloat(237)/255.0, alpha: 1.0)
                     availableButton.enabled = false
-                    availableButton.setT
                     busyButton.enabled = false
                 }
             }
