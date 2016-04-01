@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     let beaconManager = ESTBeaconManager()
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
+        print("didEnterRegion")
         let count = operationQueue.operationCount
+        print(count)
         if (count > 0) {
             operationQueue.cancelAllOperations()
         }
@@ -38,8 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     }
     
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
-        operationQueue.addOperationWithBlock{ () -> Void in
-            sleep(2)
+        print("didExitRegion")
+        print (operationQueue.operationCount)
+        
+        let operation1 = NSBlockOperation(block: {
+            sleep(3)
+        })
+        let operation2 = NSBlockOperation(block: {
             do {
                 let notification = UILocalNotification()
                 notification.alertBody = "You have left the region"
@@ -49,8 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
             } catch {
                 print("URL error")
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
-        }
+            dispatch_async(dispatch_get_main_queue(), {
+                NSNotificationCenter.defaultCenter().postNotificationName("EventNotification", object: nil, userInfo: ["data": "dummy"])
+            })
+        })
+        operationQueue.addOperation(operation1)
+        operation2.addDependency(operation1)
+        operationQueue.addOperation(operation2)
+        
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

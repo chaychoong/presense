@@ -93,7 +93,6 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         beaconManager = ESTBeaconManager()
         beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
@@ -107,13 +106,11 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     deinit {
-        // make sure to remove the observer when this view controller is dismissed/deallocated
         NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -236,7 +233,6 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
                 beaconFound = false
             }
             print("\(nearest.major) \(nearest.minor)")
-            // TODO: update the UI here
         }
     }
     
