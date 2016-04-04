@@ -225,7 +225,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate {
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon],
                        inRegion region: CLBeaconRegion) {
         for beacon in beacons {
-            if (beacon.major == (identity!.valueForKey("major") as? NSNumber)! && beacon.minor == (identity!.valueForKey("minor") as? NSNumber)! && (identity!.valueForKey("status") as! String) != "available") {
+            if (beacon.major == (identity!.valueForKey("major") as? NSNumber)! && beacon.minor == (identity!.valueForKey("minor") as? NSNumber)! && (identity!.valueForKey("status") as! String) == "out of office") {
                 saveStatus("available")
                 refresh()
             }
