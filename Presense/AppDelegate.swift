@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         print (operationQueue.operationCount)
         
         let operation1 = NSBlockOperation(block: {
-            sleep(20)
+            sleep(5)
         })
         let operation2 = NSBlockOperation(block: {
             do {
