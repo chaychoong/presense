@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "380944A0891781A643E6F0E59B55C6B6D4341575",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6CCB585858000804BB16202076224C1AB1B84311" : 9223372036854775807,
+    "380944A0891781A643E6F0E59B55C6B6D4341575" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "11F0B93A-76FA-4290-A7CA-58FBA225F965",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6CCB585858000804BB16202076224C1AB1B84311" : "..\/..\/..\/Desktop\/iOS-SDK",
+    "380944A0891781A643E6F0E59B55C6B6D4341575" : "Presense\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Presense",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iOS App\/Presense.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chaychoong\/presense.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "380944A0891781A643E6F0E59B55C6B6D4341575"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Estimote\/iOS-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6CCB585858000804BB16202076224C1AB1B84311"
+    }
+  ]
+}
