@@ -1,6 +1,6 @@
-# Presense
+# PreSense
 
-The Presense iOS App works together with Estimote beacons and Slack to help you check on your coworker's availability.
+The PreSense iOS App works together with Estimote beacons and Slack to help you check on your coworker's availability.
 
 The Android app can be found here: https://github.com/jang93/PreSense_Android
 
@@ -8,8 +8,8 @@ The Android app can be found here: https://github.com/jang93/PreSense_Android
 
 To start off, you need some Estimote beacons, preferably one per office or room! You will also need a Slack team.
 
-### Presense Bot installation instructions
-The Presense Bot repo can be found here: https://github.com/chaychoong/presensebot
+### PreSense Bot installation instructions
+The PreSense Bot repo can be found here: https://github.com/chaychoong/PreSensebot
 
 * Click on your team name on the Slack web interface and select **Apps & integrations**. Alternatively, you can use this URL: https://slack.com/apps
 
